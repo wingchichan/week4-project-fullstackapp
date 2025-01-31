@@ -32,16 +32,17 @@ app.get("/reviews", async (request, response) => {
 });
 
 // creating new data from the client and posting it back to server
-app.post("/reviews", async (request, response) => {
+app.post("/reviews", cors(), async (request, response) => {
   const body = request.body;
-  const review = request.body.review;
+  console.log(body);
   const reviewer = request.body.name;
+  const review = request.body.content;
   const data = await db.query(
-    `INSERT INTO reviews (name, review) VALUES (${reviewer}, ${review})`
+    `INSERT INTO reviews (name, content) VALUES ('${reviewer}', '${review}')`
   );
 
   //   need to include the reponse otherwise the data requested has nowhere to go to, will just keep sending
-  response.json(body);
+  response.json(data);
 });
 
 app.listen("8080", () => {

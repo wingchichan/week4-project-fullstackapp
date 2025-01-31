@@ -14,13 +14,20 @@
     <div id="app">
       <form id="form">
         <label id="label1" for="reviewer">Enter your name</label>
-        <input type="text" name="Name" placeholder="Name" id="reviewer" />
+        <input
+          type="text"
+          id="reviewer"
+          name="name"
+          placeholder="Name"
+          required
+        />
         <label id="label2" for="reviewBox">Enter your review</label>
         <input
           type="text"
           id="reviewBox"
-          name="Review"
+          name="review"
           placeholder="Your review"
+          required
         />
         <button id="submitButton">Submit</button>
       </form>
