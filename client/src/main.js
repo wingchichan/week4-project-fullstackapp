@@ -36,7 +36,7 @@ async function submitReview() {
     // 1. store response from POST call
     const response = await fetch(`${API_URL}/reviews`, {
       method: "POST",
-      body: formDataResult,
+      body: formDataObject,
     });
     // 2. log response
     console.log(await response.json());
