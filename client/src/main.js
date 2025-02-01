@@ -32,14 +32,21 @@ form.addEventListener("submit", function (event) {
 async function submitReview() {
   const formDataResult = new FormData(form);
   const formDataObject = Object.fromEntries(formDataResult);
+  const stringifiedReviews = JSON.stringify(formDataObject);
   try {
     // 1. store response from POST call
     const response = await fetch(`${API_URL}/reviews`, {
       method: "POST",
-      body: formDataObject,
+      // tells server which media types are accepted by the server
+      // e.g. in this case we're sending json
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: stringifiedReviews,
     });
-    // 2. log response
-    console.log(await response.json());
+    // 2. refresh reviews on page
+    getReviews();
   } catch (e) {
     // catch error if sending data back to server fails
     console.error(e);

@@ -25,7 +25,7 @@ app.get("/", (request, response) => {
 // fetch reviews from my SQL table
 // the result is a JSON object with the data we want inside
 app.get("/reviews", async (request, response) => {
-  const result = await db.query(`SELECT * FROM reviews`);
+  const result = await db.query(`SELECT * FROM reviews ORDER BY id DESC`);
   const reviews = result.rows;
   console.log(result);
   response.json(reviews);
