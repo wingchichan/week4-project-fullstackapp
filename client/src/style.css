@@ -112,6 +112,10 @@ body {
   border-width: 1px;
 }
 
+.reviewer-name {
+  font-weight: bolder;
+}
+
 #label2 {
   margin-top: 20px;
 }
@@ -128,4 +132,14 @@ body {
   padding: 5px;
   border-radius: 10px;
   border-width: 1px;
+}
+
+#reviews {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px 20px;
+  margin-top: 20px;
+}
+
+.review {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

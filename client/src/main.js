@@ -1,6 +1,7 @@
 // js file for our html/client side so data is visible to end user
 
 const app = document.getElementById("app");
+const reviewsSection = document.getElementById("reviews");
 
 const API_URL = "https://week4-project-fullstackapp-server.onrender.com";
 // const API_URL = "http://localhost:5173";
@@ -13,12 +14,21 @@ async function getReviews() {
 
   // forEach function to loop through the array of objects we get back from our DB and to display on page
   data.forEach((review) => {
+    // create parent div for each review
+    const divForEachReview = document.createElement("div");
+    divForEachReview.setAttribute("class", "review");
+
     const pTagForName = document.createElement("p");
     pTagForName.innerText = `${review.name}`;
-    app.appendChild(pTagForName);
+    pTagForName.setAttribute("class", "reviewer-name");
+
     const pTagForReview = document.createElement("p");
     pTagForReview.innerText = `${review.content}`;
-    app.appendChild(pTagForReview);
+
+    // add elements to parent div
+    divForEachReview.appendChild(pTagForName);
+    divForEachReview.appendChild(pTagForReview);
+    reviewsSection.appendChild(divForEachReview);
   });
 }
 getReviews();
