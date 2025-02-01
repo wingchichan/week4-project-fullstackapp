@@ -32,7 +32,7 @@ app.get("/reviews", async (request, response) => {
 });
 
 // creating new data from the client and posting it back to server
-app.post("/reviews", cors(), async (request, response) => {
+app.post("/reviews", async (request, response) => {
   const body = request.body;
   console.log(body);
   const reviewer = request.body.name;
