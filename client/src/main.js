@@ -15,20 +15,10 @@ async function getReviews() {
   // forEach function to loop through the array of objects we get back from our DB and to display on page
   data.forEach((review) => {
     // create parent div for each review
-    const divForEachReview = document.createElement("div");
-    divForEachReview.setAttribute("class", "review");
-
-    const pTagForName = document.createElement("p");
-    pTagForName.innerText = `${review.name}`;
-    pTagForName.setAttribute("class", "reviewer-name");
-
-    const pTagForReview = document.createElement("p");
-    pTagForReview.innerText = `${review.content}`;
-
-    // add elements to parent div
-    divForEachReview.appendChild(pTagForName);
-    divForEachReview.appendChild(pTagForReview);
-    reviewsSection.appendChild(divForEachReview);
+    // we've stored the result of the createReviewDiv function in it's own variable
+    // it's then passed into appendChild
+    const reviewDiv = createReviewDiv(`${review.name}`, `${review.content}`);
+    reviewsSection.appendChild(reviewDiv);
   });
 }
 getReviews();
@@ -55,10 +45,30 @@ async function submitReview() {
       },
       body: stringifiedReviews,
     });
-    // 2. refresh reviews on page
-    getReviews();
+    // 2. add new review on page
+    reviewsSection.prepend(
+      createReviewDiv(`${formDataObject.name}`, `${formDataObject.content}`)
+    );
   } catch (e) {
     // catch error if sending data back to server fails
     console.error(e);
   }
+}
+// creates div for new review and returns it
+function createReviewDiv(name, reviewText) {
+  // create parent div for each review
+  const divForReview = document.createElement("div");
+  divForReview.setAttribute("class", "review");
+
+  const pTagForName = document.createElement("p");
+  pTagForName.innerText = `${name}`;
+  pTagForName.setAttribute("class", "reviewer-name");
+
+  const pTagForReview = document.createElement("p");
+  pTagForReview.innerText = `${reviewText}`;
+
+  // add elements to parent div
+  divForReview.appendChild(pTagForName);
+  divForReview.appendChild(pTagForReview);
+  return divForReview;
 }
