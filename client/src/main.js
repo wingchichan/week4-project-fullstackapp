@@ -56,7 +56,7 @@ async function submitReview() {
   }
 }
 function resetForm() {
-  document.getElementById("form").reset();
+  form.reset();
 }
 
 // creates div for new review and returns it
