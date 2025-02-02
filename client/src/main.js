@@ -49,11 +49,16 @@ async function submitReview() {
     reviewsSection.prepend(
       createReviewDiv(`${formDataObject.name}`, `${formDataObject.content}`)
     );
+    resetForm();
   } catch (e) {
     // catch error if sending data back to server fails
     console.error(e);
   }
 }
+function resetForm() {
+  document.getElementById("form").reset();
+}
+
 // creates div for new review and returns it
 function createReviewDiv(name, reviewText) {
   // create parent div for each review
