@@ -98,12 +98,34 @@ button:focus-visible {
 body {
   background-color: wheat;
   padding: 20px;
+}
+
+body,
+#reviewBox {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#form {
+h1 {
+  margin: 0;
+}
+
+form {
   display: flex;
   flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+}
+
+#intro {
+  font-size: 20px;
+}
+
+input,
+textarea,
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
 }
 
 #reviewer {
@@ -116,7 +138,7 @@ body {
   font-weight: bolder;
 }
 
-#label2 {
+#reviewBoxLabel {
   margin-top: 20px;
 }
 
@@ -125,13 +147,16 @@ body {
   height: 200px;
   border-radius: 3px;
   border-width: 1px;
+  resize: vertical;
 }
 
 #submitButton {
   margin-top: 20px;
-  padding: 5px;
-  border-radius: 10px;
-  border-width: 1px;
+  border-radius: 8px;
+  border: none;
+  background-color: cadetblue;
+  color: white;
+  align-self: flex-end;
 }
 
 #reviews {
@@ -142,4 +167,30 @@ body {
 
 .review {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.review:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 1050px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  form {
+    align-self: flex-start;
+  }
+
+  form,
+  #reviews {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  #reviews {
+    margin-top: 0;
+  }
 }

@@ -9,13 +9,15 @@
     <title>Vite App</title>
   </head>
   <body>
+    <header>
+      <h1>Brunch House</h1>
+      <p id="intro">
+        We're always looking for feedback 👀. Please leave a review 📝.
+      </p>
+    </header>
     <main id="app">
-      <header>
-        <h1>Restaurant Name</h1>
-        <h4>We're always looking for feedback 👀. Please leave a review 📝.</h4>
-      </header>
       <form id="form">
-        <label id="label1" for="reviewer">Enter your name</label>
+        <label id="nameLabel" for="reviewer">Enter your name</label>
         <input
           type="text"
           id="reviewer"
@@ -23,15 +25,15 @@
           placeholder="Name"
           required
         />
-        <label id="label2" for="reviewBox">Enter your review</label>
-        <input
+        <label id="reviewBoxLabel" for="reviewBox">Enter your review</label>
+        <textarea
           type="text"
           id="reviewBox"
           name="content"
           placeholder="Your review"
           required
-        />
-        <button id="submitButton">Submit</button>
+        ></textarea>
+        <button id="submitButton">Submit Review</button>
       </form>
       <section id="reviews"></section>
     </main>
