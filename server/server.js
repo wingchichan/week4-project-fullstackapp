@@ -18,7 +18,7 @@ const db = new pg.Pool({
 });
 
 // listening for a GET request on the root route and will then respond with hello
-app.get("/", (request, response) => {
+app.get("/", async (request, response) => {
   const result = await db.query(`SELECT * FROM reviews ORDER BY id DESC`);
   const reviews = result.rows;
   console.log(result);
