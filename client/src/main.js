@@ -8,7 +8,7 @@ const API_URL = "https://week4-project-fullstackapp-server.onrender.com";
 
 // making a fetch API request to our server
 async function getReviews() {
-  const response = await fetch(`${API_URL}/reviews`);
+  const response = await fetch(`${API_URL}`);
   // reads the data in json
   const data = await response.json();
 
